@@ -1,0 +1,9 @@
+{
+	"name": "feature1-df",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f4a4c83b-7c3b-49c1-b8f4-aa6a80a67366",
+		"tenantId": "4cfa0d42-606c-4af9-aa80-a541ec20ccd7"
+	}
+}
