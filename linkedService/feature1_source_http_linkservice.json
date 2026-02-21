@@ -1,0 +1,17 @@
+{
+	"name": "feature1_source_http_linkservice",
+	"properties": {
+		"description": "Source Link Service",
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://restcountries.com/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
