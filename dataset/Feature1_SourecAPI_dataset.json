@@ -1,0 +1,16 @@
+{
+	"name": "Feature1_SourecAPI_dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "feature1_source_http_linkservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			}
+		}
+	}
+}

@@ -3,7 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Copy API data",
+				"description": "Countries data",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -15,16 +16,21 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
 					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "BinarySink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings",
 							"copyBehavior": "FlattenHierarchy"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
 						}
 					},
 					"enableStaging": true,
@@ -47,59 +53,37 @@
 								"type": "LinkedServiceReference"
 							}
 						}
-					},
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"path": "$['cca2']"
-								},
-								"sink": {
-									"name": "cca2"
-								}
-							},
-							{
-								"source": {
-									"path": "$['cca3']"
-								},
-								"sink": {
-									"name": "cca3"
-								}
-							},
-							{
-								"source": {
-									"path": "$['region']"
-								},
-								"sink": {
-									"name": "region"
-								}
-							},
-							{
-								"source": {
-									"path": "$['subregion']"
-								},
-								"sink": {
-									"name": "subregion"
-								}
-							},
-							{
-								"source": {
-									"path": "$['population']"
-								},
-								"sink": {
-									"name": "population"
-								}
-							}
-						]
 					}
 				},
+				"inputs": [
+					{
+						"referenceName": "Feature1_SourecAPI_dataset",
+						"type": "DatasetReference"
+					}
+				],
 				"outputs": [
 					{
-						"referenceName": "ADLSrestapidataset",
+						"referenceName": "feature1_sink_http_dataset",
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "feature1_databricks",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "feature1_databricks",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": []
