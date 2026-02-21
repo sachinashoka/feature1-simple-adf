@@ -80,6 +80,9 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/msachin.overseas@gmail.com/feature1"
+				},
 				"linkedServiceName": {
 					"referenceName": "feature1_databricks",
 					"type": "LinkedServiceReference"
